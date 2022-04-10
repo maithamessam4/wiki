@@ -21,7 +21,7 @@ def index(request):
     return render(request, "encyclopedia/index.html", {
         "entries": entries
     })
-def input_entery(requesr,title:str):
+def single_entery(requesr,title:str):
     content=util.get_entry(title)
     return render(request,'encyclopedia/single_entry.html',context={'title':title,'content':content})
 def create(request):
