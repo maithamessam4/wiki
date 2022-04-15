@@ -3,7 +3,6 @@ from importlib.resources import contents
 from multiprocessing import context
 from urllib import request
 from django.shortcuts import render
-
 from encyclopedia.forms import enterycreateform
 
 from . import util
@@ -21,7 +20,7 @@ def index(request):
     return render(request, "encyclopedia/index.html", {
         "entries": entries
     })
-def single_entery(requesr,title:str):
+def single_entry(requesr,title:str):
     content=util.get_entry(title)
     return render(request,'encyclopedia/single_entry.html',context={'title':title,'content':content})
 def create(request):
@@ -36,8 +35,23 @@ def create(request):
             util.save_entry(title,content)
             return redirect_stderr('wiki:index')
         return render(request,'encyclopedia/create.html',{'form':form,}) 
-def edit(request,title:str):
     
-    return
     
+def edit(request, title: str):
+    if request.method == 'GET' :
+        entries = util.get_entry(title)
+        return render(request, 'encyclopedia/edit.html', context={
+            'title': title,
+            'form': editForm(initial={'content': entries}),
+        })
+    elif request.method == 'POST':
+        form = editForm(request.POST )
+        if form.is_valid():
+            content = form.cleaned_data['content']
+            util.save_entry(title, content)
+            entries = util.get_entry(title)
+            return render(request, 'encyclopedia/edit.html', context={
+                'title':title,
+                'form': markdown2.markdown(entries),
+               })
 

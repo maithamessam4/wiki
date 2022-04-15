@@ -4,7 +4,7 @@ from . import views
 app_name='wiki'
 urlpatterns = [
     path('wiki/create/',views.create,name="create"),   
-    path('entries/<str:title>',views.single_entery,name=('single-entery')),
+    path('entries/<str:title>',views.single_entry,name=('single-entry')),
     path('wiki/edit/<str:title>/',views.edit,name="edit"),
     path("", views.index, name="index")
 ]
