@@ -1,9 +1,11 @@
 from contextlib import _RedirectStream, redirect_stderr, redirect_stdout
 from importlib.resources import contents
 from multiprocessing import context
+from random import random
 from urllib import request
 from django.shortcuts import render
 from encyclopedia.forms import enterycreateform
+import random
 
 from . import util
 import encyclopedia
@@ -54,4 +56,6 @@ def edit(request, title: str):
                 'title':title,
                 'form': markdown2.markdown(entries),
                })
-
+def randmo(request):
+    return util.get_entry
+    

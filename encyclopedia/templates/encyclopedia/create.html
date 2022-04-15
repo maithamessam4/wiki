@@ -6,11 +6,11 @@
 
 {% block body %}
     {% comment %} <a href={%url="wiki:edit"%}</a> {% endcomment %}
-        <form action="{% url'wiki:create' %}">
+    <form action="{% url'wiki:create' %}">
 
         {% csrf_token %}
-         {{form.as_p}}
-         <button type="submit" value="submit"></button>   
+        {{form.as_p}}
+        <button type="submit" value="submit"></button>   
     </from>
 
 {% endblock %}

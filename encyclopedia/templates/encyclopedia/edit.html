@@ -1,0 +1,12 @@
+{% extends "encyclopedia/layout.html" %}
+
+{%block title%}edit{%endblock title%}
+
+{%block body%}
+    <h1>edit</h1>
+    <form action="{% url 'wki:edit' %}">
+        <button type="submit" value="submit">submit</button>
+    </form>
+
+
+{%endblock body%}
