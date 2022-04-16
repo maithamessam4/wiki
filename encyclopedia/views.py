@@ -54,7 +54,7 @@ def edit(request, title: str):
             entries = util.get_entry(title)
             return render(request, 'encyclopedia/edit.html', context={
                 'title':title,
-                'form': markdown2.markdown(entries),
+                'form': markdown.markdown(entries),
                })
 
     
