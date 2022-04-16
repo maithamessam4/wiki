@@ -6,7 +6,7 @@ from urllib import request
 from django.shortcuts import render
 from encyclopedia.forms import enterycreateform
 import random
-
+import markdown
 from . import util
 import encyclopedia
 
@@ -44,10 +44,10 @@ def edit(request, title: str):
         entries = util.get_entry(title)
         return render(request, 'encyclopedia/edit.html', context={
             'title': title,
-            'form': editForm(initial={'content': entries}),
+            'form': edit(initial={'content': entries}),
         })
     elif request.method == 'POST':
-        form = editForm(request.POST )
+        form = edit(request.POST )
         if form.is_valid():
             content = form.cleaned_data['content']
             util.save_entry(title, content)
