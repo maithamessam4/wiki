@@ -56,6 +56,5 @@ def edit(request, title: str):
                 'title':title,
                 'form': markdown2.markdown(entries),
                })
-def randmo(request):
-    return util.get_entry
+
     
